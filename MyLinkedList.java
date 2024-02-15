@@ -18,41 +18,41 @@ public class MyLinkedList<E> {
         }
     }
 
-    public void delFirst() {//works
-        if (head != null) {
-            head = head.next;
-            tail = null;
-            size--;
+    public void delFirst() {//Deletes the first element of the array.
+        if (head != null) { //Runs when the head has a value.
+            head = head.next; //Move the head to the next element.
+            tail = null; 
+            size--; //Decrease the size of the linked list. 
         }
     }
 
-    public String isEmpty() {//works
-        Nodes current = head;
-        while (current == null) {
+    public String isEmpty() {//Checks if the linked list is empty. 
+        Nodes current = head; //make the current equal to the head. 
+        while (current == null) { //if the whole linked list is null the method will return the linked list is empty.
             if (current == tail) {
                 return "List is empty";
             }
-            current = head.next;
+            current = head.next; 
 
         }
-        return "List is Not Empty";
+        return "List is Not Empty"; //Runs when there is an element that is not null. 
     }
 
-  public Object getLargest() {// works
-        Nodes current = head;
-        Nodes largest = head;
-        while (current.next != null) {
-            if ((current.element instanceof Integer && largest.element instanceof Integer)) {
-                if ((Integer) current.next.element > (Integer) largest.element) {
+  public Object getLargest() {//Finds the largest integer in the linked list. 
+        Nodes current = head; //make current equal to the head. 
+        Nodes largest = head; //make largest eqaul to the haed. 
+        while (current.next != null) { 
+            if ((current.element instanceof Integer && largest.element instanceof Integer)) { //Checks if both the largest and current elements are integers. 
+                if ((Integer) current.next.element > (Integer) largest.element) { //Makes the next element the largest element when the next element is greater than the current largest element. 
                     largest = current.next;
                 }
             }
-            current = current.next;
+            current = current.next; //moves to the next element to check.
         }
-        return largest.element; 
+        return largest.element; //returns the largest element. 
     }
 
-    public int countNegative() {//works
+    public int countNegative() {//Counts how many negative numbers there are. 
         Nodes current = head;
         int count = 0;
         while (current.next != null) {
