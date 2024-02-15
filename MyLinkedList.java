@@ -2,17 +2,17 @@ package datas_lab3;
 
 public class MyLinkedList<E> {
 
-    private Nodes head, tail;
-    private int size = 0;
+    private Nodes head, tail; //Defining the head and tail for the linked list. 
+    private int size = 0; //Setting the size of the Linked list to be initally 0.
 
     public MyLinkedList() {
     }
 
-    public void addFirst(E e) {//works
-        Nodes newNode = new Nodes(e);
+    public void addFirst(E e) {//This adds an element to the start of the linked list. 
+        Nodes newNode = new Nodes(e);  //Making a new node for the new element. 
         newNode.next = head;
-        head = newNode;
-        size++;
+        head = newNode;  //Make this the new head.
+        size++; //Increasing the size of the linkedlist.
         if (tail == null) {
             tail = head;
         }
