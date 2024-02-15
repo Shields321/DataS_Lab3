@@ -56,7 +56,7 @@ public class MyLinkedList<E> {
         Nodes current = head;
         int count = 0;
         while (current.next != null) {
-            if ((int) current.element < 0) {
+            if ( current.element instanceof Double && (Double) current.element  < 0) {
                 count++;
             }
             current = current.next;
@@ -68,8 +68,10 @@ public class MyLinkedList<E> {
         Nodes current = head;
         while (current != null) {
             if (( current.element).equals(value)) {
+                
                 return "The value "+ current.element+ " is in the list";
             }
+            System.out.println(head.element);
             current = current.next;
         }
         return "The value is not in the list";
