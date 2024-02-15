@@ -76,7 +76,7 @@ public class MyLinkedList<E> {
         }
         return "The value is not in the list";
     }
-    public void insert(int index,Object value){//This works
+    public void insert(int index,Object value){//doesnt work
         Nodes current = head;
         Object temp;
        
