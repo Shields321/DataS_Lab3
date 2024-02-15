@@ -43,7 +43,7 @@ public class MyLinkedList<E> {
         Nodes largest = head;
         while (current.next != null) {
             largest = current;
-            if (((Comparable)(int) largest.element).compareTo(current.next.element) < 0) {
+            if (((Comparable) (int) largest.element).compareTo(current.next.element) < 0) {
                 largest = current.next;
 
             }
@@ -56,7 +56,7 @@ public class MyLinkedList<E> {
         Nodes current = head;
         int count = 0;
         while (current.next != null) {
-            if ( current.element instanceof Double && (Double) current.element  < 0) {
+            if (current.element instanceof Double && (Double) current.element < 0) {
                 count++;
             }
             current = current.next;
@@ -67,16 +67,17 @@ public class MyLinkedList<E> {
     public Object Search(Object value) {//Works
         Nodes current = head;
         while (current != null) {
-            if (( current.element).equals(value)) {
-                
-                return "The value "+ current.element+ " is in the list";
+            if ((current.element).equals(value)) {
+
+                return "The value " + current.element + " is in the list";
             }
             System.out.println(head.element);
             current = current.next;
         }
         return "The value is not in the list";
     }
-    public void insert(int index,Object value){//doesnt work
+
+     public void insert(int index,Object value){//doesnt work
         Nodes current = head;
         Object temp;
        
@@ -97,9 +98,11 @@ public class MyLinkedList<E> {
         }
     }
 
+
     public void sort() {//Sort doesnt work because it is only for integers
         head = mergeSort(head);
     }
+
     public Nodes getMiddle(Nodes head) {
         if (head == null) {
             return head;
@@ -111,6 +114,7 @@ public class MyLinkedList<E> {
         }
         return slow;
     }
+
     private Nodes mergeSort(Nodes head) {
         if (head == null || head.next == null) {
             return head;
@@ -155,7 +159,7 @@ public class MyLinkedList<E> {
 
     public String toString() {//works
         StringBuilder result = new StringBuilder(" ");
-
+        
         Nodes current = head;
         for (int i = 0; i < size; i++) {
             result.append(current.element);
