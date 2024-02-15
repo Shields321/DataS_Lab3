@@ -38,14 +38,13 @@ public class MyLinkedList<E> {
         return "List is Not Empty";
     }
 
-    public Object getLargest() {//doesnt work
+    public <T extends Comparable<T>> Object getLargest() {//doesnt work
         Nodes current = head;
         Nodes largest = head;
         while (current.next != null) {
             largest = current;
-            if (((Comparable) (int) largest.element).compareTo(current.next.element) < 0) {
+            if (current.element instanceof Comparable && ((T) current.element).compareTo((T) largest.element) > 0) {
                 largest = current.next;
-
             }
             current = current.next;
         }
@@ -77,7 +76,7 @@ public class MyLinkedList<E> {
         return "The value is not in the list";
     }
 
-     public void insert(int index,Object value){//doesnt work
+     public void insert(int index,Object value){
         Nodes newNode = new Nodes(value);
         Nodes current = head;
         int count =0;
