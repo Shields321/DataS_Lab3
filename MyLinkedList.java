@@ -38,17 +38,18 @@ public class MyLinkedList<E> {
         return "List is Not Empty";
     }
 
-    public <T extends Comparable<T>> Object getLargest() {//doesnt work
+  public Object getLargest() {// works
         Nodes current = head;
         Nodes largest = head;
         while (current.next != null) {
-            largest = current;
-            if (current.element instanceof Comparable && ((T) current.element).compareTo((T) largest.element) > 0) {
-                largest = current.next;
+            if ((current.element instanceof Integer && largest.element instanceof Integer)) {
+                if ((Integer) current.next.element > (Integer) largest.element) {
+                    largest = current.next;
+                }
             }
             current = current.next;
         }
-        return largest.element;
+        return largest.element; 
     }
 
     public int countNegative() {//works
