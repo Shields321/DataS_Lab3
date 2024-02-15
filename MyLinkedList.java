@@ -8,7 +8,7 @@ public class MyLinkedList<E> {
     public MyLinkedList() {
     }
 
-    public void addFirst(E e) {
+    public void addFirst(E e) {//works
         Nodes newNode = new Nodes(e);
         newNode.next = head;
         head = newNode;
@@ -18,7 +18,7 @@ public class MyLinkedList<E> {
         }
     }
 
-    public void delFirst() {
+    public void delFirst() {//works
         if (head != null) {
             head = head.next;
             tail = null;
@@ -26,7 +26,7 @@ public class MyLinkedList<E> {
         }
     }
 
-    public String isEmpty() {
+    public String isEmpty() {//works
         Nodes current = head;
         while (current == null) {
             if (current == tail) {
@@ -38,12 +38,12 @@ public class MyLinkedList<E> {
         return "List is Not Empty";
     }
 
-    public Object getLargest() {
+    public Object getLargest() {//doesnt work
         Nodes current = head;
         Nodes largest = head;
         while (current.next != null) {
             largest = current;
-            if (((Comparable) largest.element).compareTo(current.next.element) < 0) {
+            if (((Comparable)(int) largest.element).compareTo(current.next.element) < 0) {
                 largest = current.next;
 
             }
@@ -52,7 +52,7 @@ public class MyLinkedList<E> {
         return largest.element;
     }
 
-    public int countNegative() {
+    public int countNegative() {//works
         Nodes current = head;
         int count = 0;
         while (current.next != null) {
@@ -64,31 +64,38 @@ public class MyLinkedList<E> {
         return count;
     }
 
-    public Object Search(Object value) {
+    public Object Search(Object value) {//sorta works cant find first index
         Nodes current = head;
         while (current != null) {
-            if (((Comparable) current.element).compareTo(value) == 0) {
+            if (( current.element).equals(value)) {
                 return "The value "+ current.element+ " is in the list";
             }
             current = current.next;
         }
         return "The value is not in the list";
     }
-    public void insert(int index,Object value){
+    public void insert(int index,Object value){//This works
         Nodes current = head;
         Object temp;
+       
         for(int i=0;i<=index;i++){
+            if(index == i){              
+                break;
+            }
             current = current.next;
+            
         }
         temp = current.element;
         current.element = value;
-        while(current.next!=null){
-            current = current.next;
-            current.element = temp;
+        while(current.next!=null){       
+            current = current.next;                            
+            temp = current.element;
+            
+           
         }
     }
 
-    public void sort() {
+    public void sort() {//Sort doesnt work because it is only for integers
         head = mergeSort(head);
     }
     public Nodes getMiddle(Nodes head) {
@@ -144,7 +151,7 @@ public class MyLinkedList<E> {
         return result;
     }
 
-    public String toString() {
+    public String toString() {//works
         StringBuilder result = new StringBuilder(" ");
 
         Nodes current = head;
