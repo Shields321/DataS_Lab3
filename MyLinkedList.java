@@ -78,24 +78,29 @@ public class MyLinkedList<E> {
     }
 
      public void insert(int index,Object value){//doesnt work
+        Nodes newNode = new Nodes(value);
         Nodes current = head;
-        Object temp;
-       
-        for(int i=0;i<=index;i++){
-            if(index == i){              
-                break;
-            }
+        int count =0;
+        for (int i = 0; i < index-1 ; i++) {
             current = current.next;
-            
+            count++;
         }
-        temp = current.element;
-        current.element = value;
-        while(current.next!=null){       
-            current = current.next;                            
-            temp = current.element;
-            
-           
+        if (index == 0) {
+            newNode.next = head;
+            head = newNode;
+            if (tail == null) {
+                tail = newNode;
+            }
+            size++;
+            return;
         }
+        newNode.next = current.next;
+        current.next = newNode;
+        if (newNode.next == null) {
+            tail = newNode;
+        }
+        size++;
+
     }
 
 
