@@ -64,7 +64,7 @@ public class MyLinkedList<E> {
         return count;
     }
 
-    public Object Search(Object value) {//sorta works cant find first index
+    public Object Search(Object value) {//Works
         Nodes current = head;
         while (current != null) {
             if (( current.element).equals(value)) {
