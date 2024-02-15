@@ -102,64 +102,31 @@ public class MyLinkedList<E> {
         size++;
 
     }
-
-
-    public void sort() {//Sort doesnt work because it is only for integers
-        head = mergeSort(head);
-    }
-
-    public Nodes getMiddle(Nodes head) {
-        if (head == null) {
-            return head;
+    public void sort() {
+        Nodes current = head;
+        Nodes current2 = head;
+        Object temp;
+        int count = 0;
+        while (current2.next != null) {
+            count++;
+            current2 = current2.next;
         }
-        Nodes slow = head, fast = head;
-        while (fast.next != null && fast.next.next != null) {
-            slow = slow.next;
-            fast = fast.next.next;
+        for (int i = 0; i < count; i++) {
+            current = head;
+            for (int j = 0; j < count; j++) {
+                if ((current.element instanceof Integer && current.next.element instanceof Integer)) {
+                    if ((Integer) current.element > (Integer) current.next.element) {
+                        temp = current.element;
+                        current.element = current.next.element;
+                        current.next.element = temp;
+
+                    }
+
+                    current = current.next;
+                }
+
+            }
         }
-        return slow;
-    }
-
-    private Nodes mergeSort(Nodes head) {
-        if (head == null || head.next == null) {
-            return head;
-        }
-
-        // Find the middle of the list
-        Nodes middle = getMiddle(head);
-        Nodes nextOfMiddle = middle.next;
-
-        // Set the next of middle node to null
-        middle.next = null;
-
-        // Apply mergeSort on left list
-        Nodes left = mergeSort(head);
-
-        // Apply mergeSort on right list
-        Nodes right = mergeSort(nextOfMiddle);
-
-        // Merge the left and right lists
-        return merge(left, right);
-    }
-
-    private Nodes merge(Nodes left, Nodes right) {
-        Nodes result = null;
-        if (left == null) {
-            return right;
-        }
-        if (right == null) {
-            return left;
-        }
-
-        // Pick either left or right, and recur
-        if (((Comparable) left.element).compareTo(right.element) <= 0) {
-            result = left;
-            result.next = merge(left.next, right);
-        } else {
-            result = right;
-            result.next = merge(left, right.next);
-        }
-        return result;
     }
 
     public String toString() {//works
