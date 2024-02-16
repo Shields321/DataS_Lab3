@@ -71,7 +71,6 @@ public class MyLinkedList<E> {
 
                 return "The value " + current.element + " is in the list";
             }
-            System.out.println(head.element);
             current = current.next; //makes the pointer to the next element to be checked. 
         }
         return "The value is not in the list"; //runs when the value is not any of the nodes. 
@@ -103,47 +102,38 @@ public class MyLinkedList<E> {
         System.out.println(Search(value)+ " this is confirmation that your input is in the list");
 
     }
-    public void sort() {
-        Nodes current = head;
-        Nodes current2 = head;
+    public void sort() { //Sorts the linked list is ascending order. This is based on Bubble Sort. 
+        Nodes current = head; //This current is used to go through the linked list. 
         Object temp;
-        int count = 0;
-        while (current2.next != null) {
-            count++;
-            current2 = current2.next;
-        }
-        for (int i = 0; i < count; i++) {
-            current = head;
-            for (int j = 0; j < count; j++) {
-                if ((current.element instanceof Integer && current.next.element instanceof Integer)) {
-                    if ((Integer) current.element > (Integer) current.next.element) {
+        for (int i = 0; i < size; i++) { //This for loop through the whole linked list. 
+            current = head; 
+            for (int j = 0; j < size - 1; j++) { //This for loop is used to swap the elements next to each other. 
+                if ((current.element instanceof Integer && current.next.element instanceof Integer)) { //Checks if the current and next element are integers. 
+                    if ((Integer) current.element > (Integer) current.next.element) { //Swaps the two elements when the current element is greater than the next element. 
                         temp = current.element;
                         current.element = current.next.element;
                         current.next.element = temp;
-
                     }
-
-                    current = current.next;
+                    current = current.next; //Goes to the next element. 
                 }
-
             }
         }
     }
 
-    public String toString() {//works
-        StringBuilder result = new StringBuilder(" ");
+    public String toString() {//This is used to to prinnt out the linked list. 
+        StringBuilder result = new StringBuilder(" "); //used to add strings together. 
         
         Nodes current = head;
-        for (int i = 0; i < size; i++) {
-            result.append(current.element);
+        for (int i = 0; i < size; i++) { //This for loop is used to go through the linked list. 
+            result.append(current.element); 
             current = current.next;
-            if (current != null) {
+            if (current != null) { //Puts a comma next to the element. 
                 result.append(" , ");
             } else {
-                result.append(" ");
+                result.append(" "); //Puts a space between the elements. 
             }
         }
-        return result.toString();
+        return result.toString(); //Prints the whole linked list. 
     }
 
 }
