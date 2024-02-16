@@ -53,39 +53,39 @@ public class MyLinkedList<E> {
     }
 
     public int countNegative() {//Counts how many negative numbers there are. 
-        Nodes current = head;
+        Nodes current = head; //make the current equal to the head. 
         int count = 0;
         while (current.next != null) {
-            if (current.element instanceof Double && (Double) current.element < 0) {
+            if (current.element instanceof Double && (Double) current.element < 0) { //when the element value is less than 0 then the count will increment. 
                 count++;
             }
             current = current.next;
         }
-        return count;
+        return count; //returns how many negative elements were counted. 
     }
 
-    public Object Search(Object value) {//Works
-        Nodes current = head;
+    public Object Search(Object value) {//Searchs the linked list for an element. 
+        Nodes current = head; //Makes the current equal to the head. 
         while (current != null) {
-            if ((current.element).equals(value)) {
+            if ((current.element).equals(value)) { //Runs when the current element is equal to the value that is being searched for. 
 
                 return "The value " + current.element + " is in the list";
             }
             System.out.println(head.element);
-            current = current.next;
+            current = current.next; //makes the pointer to the next element to be checked. 
         }
-        return "The value is not in the list";
+        return "The value is not in the list"; //runs when the value is not any of the nodes. 
     }
 
-     public void insert(int index,Object value){
-        Nodes newNode = new Nodes(value);
-        Nodes current = head;
+     public void insert(int index,Object value){ //This inserts a node into the linked list. 
+        Nodes newNode = new Nodes(value); //Makes a new node. 
+        Nodes current = head; //Makes the current start at the head. 
         int count =0;
-        for (int i = 0; i < index-1 ; i++) {
-            current = current.next;
+        for (int i = 0; i < index-1 ; i++) { //This for loop is used to find the index. 
+            current = current.next; 
             count++;
         }
-        if (index == 0) {
+        if (index == 0) { //When the insert is at the start then the new node will be made at the start of the linked list. 
             newNode.next = head;
             head = newNode;
             if (tail == null) {
@@ -94,12 +94,13 @@ public class MyLinkedList<E> {
             size++;
             return;
         }
-        newNode.next = current.next;
+        newNode.next = current.next; //Updating position of the new node. 
         current.next = newNode;
         if (newNode.next == null) {
             tail = newNode;
         }
         size++;
+        System.out.println(Search(value)+ " this is confirmation that your input is in the list");
 
     }
     public void sort() {
